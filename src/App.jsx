@@ -4,19 +4,28 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Heading from './components/heading'
 import Foot from './components/foot'
+import Note from './components/note'
+import notes from './notes'
+function createKeeper(not)
+{
+   return(
+    <Note key={not.key}
+    title={not.title}
+    content={not.content}/>
+   );
+}
+console.log(notes);
 
 function App() {
-  const [count, setCount] = useState(0)
+
 
   return (
     <>
       <Heading />
-   <div className='h-96 mb-80'>
-   <div className='w-48 p-2 rounded-md bg-white shadow-md m-5'><h1>This is the note title</h1>
-   <p>This is the note content</p></div>
-   </div>
-   
-   <Foot />
+      <div className='w-full h-auto flex mb-96'>
+       {notes.map(createKeeper)}
+       </div>
+      <Foot />
     </>
   )
 }
